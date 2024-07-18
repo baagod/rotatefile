@@ -3,6 +3,12 @@ a simple Go log rotation library
 
 一个简单的 Go 日志轮换库。
 
+## Install 安装
+
+```bash
+go get -u github.com/baagod/rotatefile
+```
+
 ## Example 用例
 
 ```go
