@@ -6,7 +6,7 @@ a simple Go log rotation library
 ## Install 安装
 
 ```bash
-go get -u github.com/baagod/rotatefile
+go get -u github.com/baagod/rotatefile@main
 ```
 
 ## Example 用例
