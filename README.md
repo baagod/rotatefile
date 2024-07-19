@@ -12,7 +12,7 @@ go get -u github.com/baagod/rotatefile@main
 ## Example 用例
 
 ```go
-file, _ := New("logs/day.log", PerMinute)
+file, _ := New("logs/day.log", rotatefile.PerMinute)
 
 for i := 0; i < 1000; i++ {
     now := time.Now().Format(time.DateTime)
