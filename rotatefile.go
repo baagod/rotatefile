@@ -43,10 +43,10 @@ func New(filepath string, rotate RotateInterval) (w *Writer, err error) {
 	now := time.Now()
 	w = &Writer{filepath: filepath, rotateInterval: rotate}
 
-	if stat != nil {
-		// 判断文件是否需要现在轮转
-		if w.rotateAt = rotate.next(stat.ModTime()); now.After(w.rotateAt) {
-			if err = w.rename(now); err != nil { // 归档文件
+	if stat != nil { // 判断文件是否需要现在轮转
+		mod := stat.ModTime()
+		if w.rotateAt = rotate.next(mod); now.After(w.rotateAt) {
+			if err = w.rename(mod); err != nil { // 归档文件
 				return
 			}
 		}
@@ -68,7 +68,6 @@ func (w *Writer) doRotate() (err error) {
 		w.rotateAt = w.rotateAt.Add(time.Duration(w.rotateInterval) * time.Second)
 		w.file, err = os.OpenFile(w.filepath, DefaultFileFlags, DefaultFilePerm)
 	}
-
 	return
 }
 
